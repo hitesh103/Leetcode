@@ -18,9 +18,13 @@ public:
                 ans.push_back(nums1[i]);
                 i++;
                 j++;
-            }else if (nums1[i]<nums2[j]){
+            }
+            // If 1st element is less than we have to increment it's index to match it to 2nd element
+            else if (nums1[i]<nums2[j]){
                 i++;
-            }else{
+            }
+            // If 2nd element is less than we have to increment it's index to match it to 1st element
+            else{
                 j++;
             }
         }
