@@ -23,5 +23,8 @@ public:
         }
 
         return ans;
+
+
+        // We can use XOR also for this problem
     }
 };
