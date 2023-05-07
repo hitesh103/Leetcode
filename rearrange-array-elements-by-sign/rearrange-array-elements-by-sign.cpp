@@ -1,38 +1,29 @@
 class Solution {
 public:
     vector<int> rearrangeArray(vector<int>& nums) {
+        int n = nums.size();
 
-    // First, we separate the positive and negative numbers in two arrays
-    int n = nums.size();
-    int pos[n], neg[n];
-    int pos_count = 0, neg_count = 0;
+    // Here we'll manke only one vector of n size and with only 0s
+        vector<int> ans(n, 0);
 
-    for (int i = 0; i < n; i++) {
-        if (nums[i] >= 0) {
-            pos[pos_count++] = nums[i];
-            } 
-        else {
-         neg[neg_count++] = nums[i];
-    }
+    // taking two vaiable to count positive and negative index
+        int positiveElementIndex = 0, negativeElementIndex = 1;
 
-    }
+    //iterating through whole vector and taking positive index bu default 0.
+    //so,first element will be positive  and negativeindex to 1 so 2nd element will be negative
 
-    // Then, we merge the positive and negative arrays alternating their values
-
-    int i = 0, j = 0, k = 0;
-
-    while (i < pos_count && j < neg_count) {
-       nums[k++] = pos[i++];
-       nums[k++] = neg[j++];
-    }
-
-    while (i < pos_count) {
-       nums[k++] = pos[i++];
-    }
-
-    while (j < neg_count) {
-      nums[k++] = neg[j++];
-    }
-        return nums;
+        for(auto num : nums){
+            if(num > 0){
+                ans[positiveElementIndex] = num;
+                // increasing index by two 
+                positiveElementIndex += 2;
+            }
+            else if(num < 0){
+                ans[negativeElementIndex] = num;
+                // increasing index by two 
+                negativeElementIndex += 2;
+            }
+        }
+        return ans;
     }
 };
