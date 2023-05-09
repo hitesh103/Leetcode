@@ -9,6 +9,9 @@ public:
         bool flag = false;
         int as = INT_MAX;
 
+        // First we check if we have any similar element in two array?
+        // If it is , then taking its minimum and returning it 
+
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
                 if(nums1[i]==nums2[j]){
@@ -17,6 +20,8 @@ public:
                 }      
             }
         }
+
+        // If there is no similat element then we will take smaller element from both and then return it.
 
         if(flag){
             return as;
