@@ -6,10 +6,8 @@ public:
         int rightCount = 0;
         string ans = "";
         int idx1=0;
-        int idx2;
 
         for(int i=0;i<n;i++){
-            // idx1 = i;
             if(s[i] == '('){
                 leftCount++;
             }else if(s[i] == ')'){
