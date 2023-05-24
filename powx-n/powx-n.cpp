@@ -1,22 +1,21 @@
 class Solution {
 public:
-    double myPow(double a, int n) {
-        double result = 1;
-        long long b = n;
-        if(b<0) b = -1 * b;
 
-        while(b){
-            if(b%2 == 1){ 
-                result = result * a;
-                b = b-1;
-            }else{
-                a = a * a;
-                b = b/2;
-            }
+    double recursemyPow(double a, long long b){
+        if(b<0){
+            return 1/recursemyPow(a,-b);
+        }else if(b==0){
+            return 1.0;
+        }else if(b%2 == 1){
+            return a*recursemyPow(a,b-1);
+        }else{
+            return recursemyPow(a*a,b/2);
         }
+        return 1.0;
+    }
 
-        if(n<0) return 1/abs(result);
-
-        return result;
+    double myPow(double a, int n) {
+        long long b = n;
+        return recursemyPow(a,b);
     }
 };
