@@ -7,7 +7,7 @@ public:
         }
         if(open<n)
             produceParenthesis(n,open+1,close,s+"(",res);
-        if(close<open)
+        if(close<open)// ........
             produceParenthesis(n,open,close+1,s+")",res);
     }
     vector<string> generateParenthesis(int n) {
