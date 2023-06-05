@@ -4,11 +4,12 @@ private:
     void subset(int index,vector<int>&nums,vector<int>&ds,vector<vector<int>>&ans){
         ans.push_back(ds);
         for(int i=index;i<nums.size();i++){
-            if(i!=index && nums[i]==nums[i-1]) continue;
+            if(i>index && nums[i]==nums[i-1]) continue;
             ds.push_back(nums[i]);
             subset(i+1,nums,ds,ans);
             ds.pop_back();
         }
+        // Here there is no base condition Because for loop will return when it end;
     }
 public:
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
