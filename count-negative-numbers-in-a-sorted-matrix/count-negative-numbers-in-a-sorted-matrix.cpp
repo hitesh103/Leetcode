@@ -7,6 +7,7 @@ public:
 
         for(int i=0;i<rows;i++){
             for(int j=0;j<cols;j++){
+                cout << grid[i][j] << " ";
                 if(grid[i][j]<0){
                     cnt++;
                 }
