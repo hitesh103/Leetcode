@@ -9,6 +9,7 @@ public:
             return;
         }
 
+        // swaping the nummber using the loop
         for(int i = ind; i < nums.size(); i++){
                 swap(nums[ind],nums[i]);
                 permutations(ind+1,ans,nums);
