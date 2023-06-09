@@ -1,32 +1,24 @@
 class Solution {
 public:
 
-    void permutations(vector<vector<int>> &ans, vector<int> ds, vector<int> &freq, vector<int> &nums){
+    void permutations(int ind,vector<vector<int>> &ans,vector<int> &nums){
         
         // Base Case
-        if(ds.size() == nums.size()){
-            ans.push_back(ds);
+        if(ind == nums.size()){
+            ans.push_back(nums);
             return;
         }
 
-        // Use an empty array to map the element
-        for(int i = 0; i < nums.size(); i++){
-            if(freq[i] == 0){
-                ds.push_back(nums[i]);
-                freq[i] = 1;
-                permutations(ans, ds, freq, nums);
-                freq[i] = 0;
-                ds.pop_back();
-            }
+        for(int i = ind; i < nums.size(); i++){
+                swap(nums[ind],nums[i]);
+                permutations(ind+1,ans,nums);
+                swap(nums[ind],nums[i]);
         }
     }
 
     vector<vector<int>> permute(vector<int>& nums) {
-        int n = nums.size();
         vector<vector<int>> ans;
-        vector<int> ds;
-        vector<int> freq(n, 0);
-        permutations(ans, ds, freq, nums);
+        permutations(0,ans,nums);
         return ans;
     }
 };
