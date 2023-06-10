@@ -8,6 +8,7 @@ class Solution {
             return;
         }
 
+        //Taking the map of queens 
         for(int row =0;row<n;row++){
             if((upperDiagonal[n-1 + col - row] == 0) && (lowerDiagonal[row+col] == 0) && leftRow[row] == 0){
                 board[row][col] = 'Q';
