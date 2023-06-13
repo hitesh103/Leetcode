@@ -11,14 +11,16 @@
 class Solution {
 public:
 
-    
-// This is a C++ code block implementing the same recursive function `mergeTwoLists`, which merges two sorted linked lists. The function works by comparing the first element of `list1` with that of `list2`, and if `list1->val` is greater than `list2->val`, it swaps `list1` and `list2`. 
+    // Desc : 
 
-// Then, the function sets `list1->next` to the result of invoking `mergeTwoLists` recursively with `list1->next` and `list2`. Finally, the function returns `list1`, which is the merged list.
-
-// Again, this implementation assumes that the linked lists are already sorted in ascending order. The `ListNode` class definition is not present in the code block. 
-
-// Overall, this implementation is very concise and easy to read. Do you have any specific questions or issues related to this code?
+    // - This is a C++ function that merges two sorted linked lists into a new linked list.
+    // - It takes in two parameters - `list1` and `list2` - which are the heads of the original linked lists.
+    // - The function recursively merges the two lists into a single sorted linked list.
+    // - If either `list1` or `list2` is `nullptr`, the function returns the other list.
+    // - The function checks which node's value is smaller and sets `list1` to it.
+    // - It then sets `list1->next` to the result of invoking `mergeTwoLists` recursively with `list1->next` and `list2`.
+    // - The final line of the function returns `list1`, which is the merged list.
+    // - This implementation assumes that the original linked lists are already sorted in ascending order.
 
 
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
