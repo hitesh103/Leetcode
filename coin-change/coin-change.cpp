@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int hp[10010]; // Memoization array
+    int hp[10010]; // Memoization array(DP Array)
 
     // Recursive function to calculate the minimum number of coins needed
     int recursCoinChange(vector<int> coins, int amount) {
