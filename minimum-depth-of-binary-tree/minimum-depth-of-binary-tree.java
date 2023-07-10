@@ -20,6 +20,6 @@ class Solution {
         return Math.min(solve(root.left, ans+1), solve(root.right, ans+1));
     }
     public int minDepth(TreeNode root) {
-        return root==null?0:solve(root, 0)+1;
+        return root==null?0:solve(root, 1);
     }
 }
