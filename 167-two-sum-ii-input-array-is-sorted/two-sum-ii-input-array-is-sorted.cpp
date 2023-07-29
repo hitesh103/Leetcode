@@ -1,24 +1,37 @@
 class Solution {
 public:
+
+    //Binary Search
+
     vector<int> twoSum(vector<int>& numbers, int target) {
-
-        //Two Pointer Approch
-
         int n = numbers.size();
-        int start = 0;
-        int end = n-1;
 
-        while(start < end){
-            int sum = numbers[start] + numbers[end];
-
-            if(sum < target){
-                start++;
-            }else if(sum > target){
-                end--;
-            }else{
-                return {start+1,end+1};
+        for (int i = 0; i < n - 1; i++) {
+            int targetDiff = target - numbers[i];
+            int index2 = binarySearch(numbers, targetDiff, i + 1, n - 1);
+            
+            if (index2 != -1) {
+                return {i + 1, index2 + 1}; // Return 1-based indices as required.
             }
         }
-        return {-1,-1};
+
+        return {}; // If no solution is found, return an empty vector.
+    }
+
+private:
+    int binarySearch(const vector<int>& numbers, int target, int left, int right) {
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (numbers[mid] == target) {
+                return mid;
+            } else if (numbers[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        return -1; // If target is not found, return -1.
     }
 };
