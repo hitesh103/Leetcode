@@ -1,21 +1,23 @@
 class Solution {
 public:
     vector<int> findDisappearedNumbers(vector<int>& nums) {
-        int n = nums.size();
-        vector<int> ans;
-        unordered_map<int, int> mpp;
+        vector<int> ans; // To store the list of missing numbers
 
-        for(int i=0;i<n;i++){
-            mpp[nums[i]]++;
+        // First Pass: Mark the presence of numbers
+        for (int i = 0; i < nums.size(); i++) {
+            int idx = abs(nums[i]) - 1; // Get the index (0-based) of the current number
+            if (nums[idx] > 0) {
+                nums[idx] = -nums[idx]; // Negate the value at the index to mark its presence
+            }
         }
 
-        for(int i=1;i<=n;i++){
-            if(mpp.find(i) == mpp.end()){
-                ans.push_back(i);
+        // Second Pass: Find missing numbers
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] > 0) {
+                ans.push_back(i + 1); // If the value is positive, the index + 1 is a missing number
             }
         }
 
         return ans;
-
     }
 };
