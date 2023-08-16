@@ -12,18 +12,14 @@ public:
             if (a + 1 == b) {
             count++;
             } else {
-            if (count > ans) {
-                ans = count;
-            }
-            count = 0;
+                ans = max(ans,count);
+                count = 0;
             }
             i++;
             j++;
         }
 
-        if (count > ans) {
-            ans = count;
-        }
+        ans = max(ans,count);
 
         return ans+1;
 
