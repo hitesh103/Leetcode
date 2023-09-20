@@ -1,21 +1,30 @@
 class Solution {
 public:
     bool isIsomorphic(string s, string t) {
-        int n = s.length();
-        int m = t.length();
+        int length = s.length();
 
-        map<int,int> mp;
-        map<int,int> mp2;
+        if (length != t.length()) {
+            return false;
+        }
 
-        for(int i=0;i<n;i++){
-            if(mp.find(s[i]) == mp.end() && mp2.find(t[i]) == mp2.end()){
-                mp[s[i]] = t[i];
-                mp2[t[i]] = s[i];
-            }else{
-                if(mp[s[i]] != t[i] || mp2[t[i]] != s[i]){
-                    return false;
-                }
+        unordered_map<char, char> sToTMap;  // Mapping from characters in s to characters in t
+        unordered_map<char, char> tToSMap;  // Mapping from characters in t to characters in s
+
+        for (int i = 0; i < length; i++) {
+            char charS = s[i];
+            char charT = t[i];
+
+            // Check for mapping consistency
+            if (sToTMap.find(charS) != sToTMap.end() && sToTMap[charS] != charT) {
+                return false;
             }
+            if (tToSMap.find(charT) != tToSMap.end() && tToSMap[charT] != charS) {
+                return false;
+            }
+
+            // Establish the mappings
+            sToTMap[charS] = charT;
+            tToSMap[charT] = charS;
         }
 
         return true;
