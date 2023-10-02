@@ -1,29 +1,28 @@
 class Solution {
 public:
 
-    vector<string> ans;
-    vector<string> characters = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
-    void combination(string &digits,int n,string s){
-        //Base case
-        if(n==digits.size()){
-            ans.push_back(s);
+    vector<string> map = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+    vector<string> result;
+
+    void f(string &digits,int i, string output){
+        //Base Case
+        if(i==digits.size()){
+            result.push_back(output);
             return;
         }
 
-        int digit = digits[n]-'0';
+        int digit = digits[i] - '0';
+        string mapping = map[digit];
 
-        for(char ch : characters[digit]){
-            s.push_back(ch);
-            combination(digits,n+1,s);
-            s.pop_back();
+        for(int j=0;j<mapping.length();j++){
+            f(digits,i+1,output+mapping[j]);
         }
     }
 
     vector<string> letterCombinations(string digits) {
-        int n = 0;
-        string s;
-        if(digits=="") return {};
-        combination(digits,0,s);
-        return ans;
+        result.clear();
+        if(digits.length() == 0) return result;
+        f(digits,0,"");
+        return result;
     }
 };
