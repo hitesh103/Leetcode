@@ -1,25 +1,25 @@
 class Solution {
 public:
 
-    vector<string> result;
+    vector<string> ans;
 
-    void f(int n , int o, int c, string output){
-        //Base Case
-        if(c==n){
-            result.push_back(output);
+    void f(int n , int open , int close, string output){
+        if(open == n && close == n){
+            ans.push_back(output);
             return;
         }
-        if(o > c){
-            f(n,o,c+1,output + ")");
+
+        if(open < n){
+            f(n, open + 1, close, output + "(");
         }
-        if(o < n){
-            f(n,o+1,c,output + "(");
+        if(close < open){
+            f(n, open, close + 1, output + ")");
         }
     }
 
     vector<string> generateParenthesis(int n) {
-        result.clear();
-        f(n,0,0,"");
-        return result;
+        string output;
+        f(n, 0, 0, output);
+        return ans;
     }
 };
