@@ -37,21 +37,10 @@ public:
         for (int row = 0; row < rows; ++row) {
             for (int col = 0; col < cols; ++col) {
                 if (solve(row, col, board, 0, word, visited)) {
-                    // Clean up memory
-                    for (int i = 0; i < rows; ++i) {
-                        delete[] visited[i];
-                    }
-                    delete[] visited;
                     return true;
                 }
             }
         }
-
-        // Clean up memory
-        for (int i = 0; i < rows; ++i) {
-            delete[] visited[i];
-        }
-        delete[] visited;
 
         return false;
     }
