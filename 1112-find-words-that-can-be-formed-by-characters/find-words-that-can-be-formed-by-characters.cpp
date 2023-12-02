@@ -1,36 +1,38 @@
 class Solution {
 public:
     int countCharacters(vector<string>& words, string chars) {
-        int ans = 0;
-        map<char, int> count;
-
-        for(int i = 0; i < chars.length(); i++){
-            count[chars[i]]++; 
+        vector<int> counts(26, 0);
+        
+        // Initialize Character Counts Array
+        for (char ch : chars) {
+            counts[ch - 'a']++;
         }
 
-        for(int i = 0; i < words.size(); i++){
+        int result = 0;
 
-            int wordLen = words[i].length();
-
-            map<char, int> currCount = count; 
-
-            int j;
-            for(j = 0; j < wordLen; j++){
-                if(currCount[words[i][j]] <= 0){
-                    break;
-                }
-                currCount[words[i][j]]--; 
-            }
-            
-            if(j == wordLen){
-                ans += wordLen; 
-            }
-            
-            count = {};
-            for(int i = 0; i < chars.length(); i++){
-                count[chars[i]]++;
+        // Check Words
+        for (const string& word : words) {
+            if (canForm(word, counts)) {
+                // Step 4: Calculate Lengths
+                result += word.length();
             }
         }
-        return ans;
+
+        return result;
+    }
+
+    bool canForm(const std::string& word, std::vector<int>& counts) {
+        std::vector<int> c(26, 0);
+
+        // Update Counts Array
+        for (char ch : word) {
+            int x = ch - 'a';
+            c[x]++;
+            if (c[x] > counts[x]) {
+                return false;
+            }
+        }
+
+        return true;
     }
 };
