@@ -13,7 +13,7 @@ public:
         // Check Words
         for (const string& word : words) {
             if (canForm(word, counts)) {
-                // Step 4: Calculate Lengths
+                // Calculate Lengths
                 result += word.length();
             }
         }
