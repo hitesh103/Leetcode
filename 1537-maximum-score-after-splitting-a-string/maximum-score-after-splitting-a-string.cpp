@@ -21,7 +21,7 @@ public:
         int zeroS = 0;
         int oneS = 0;
 
-        // Iterate from the second character to the second-to-last character
+        // Iterate from the second character to the second-to-last character becausee we have to split in two parts and at last character we can not split so we'll itereate to second last only
         for (int i = 0; i < n - 1; i++) {
             if (s[i] - '0' == 0) {
                 zeroS++;
