@@ -12,7 +12,6 @@ public:
 
         for (auto it = mp.begin(); it != mp.end(); ++it) {
             int i = it->second;
-            cout << i << endl;
 
             if(i == 1){
                 return -1;
