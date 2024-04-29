@@ -11,24 +11,16 @@
  */
 class Solution {
 public:
-    int low, high;
-    TreeNode* recurse(TreeNode* node){
-        if(node == nullptr) return node;
+    TreeNode* trimBST(TreeNode* root, int low, int high) {
+        if(root == nullptr) return root;
 
-        if(node->val < low){
-            return recurse(node->right);
-        }
-        else if(node->val > high){
-            return recurse(node->left);
-        }
-        else if(node->val >= low && node->val <= high){
-            node->left = recurse(node->left);
-            node->right = recurse(node->right);
-        }
-        return node;
-    }
-    TreeNode* trimBST(TreeNode* root, int Low, int High) {
-        low = Low, high = High;
-        return recurse(root);
+        if(root->val < low)  return trimBST(root->right,low,high);
+        if(root->val > high) return trimBST(root->left,low,high);
+
+        // when in range
+        root->right = trimBST(root->right,low,high);
+        root->left = trimBST(root->left,low,high);
+
+        return root;
     }
 };
