@@ -1,3 +1,7 @@
-SELECT w1.Id
-FROM Weather w1, Weather w2
-WHERE dateDiff(w1.recordDate,w2.recordDate) = 1 AND w1.Temperature > w2.Temperature;
+SELECT today.id
+FROM Weather yesterday 
+INNER JOIN Weather today
+
+WHERE DATEDIFF(today.recordDate,yesterday.recordDate) = 1
+    AND today.temperature > yesterday.temperature
+;
