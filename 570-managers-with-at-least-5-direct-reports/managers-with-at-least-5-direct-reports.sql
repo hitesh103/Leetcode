@@ -1,11 +1,9 @@
-SELECT
-    name
-FROM
-    Employee
-WHERE
-    id IN (
-        SELECT managerId 
-        FROM Employee
-        GROUP BY managerId
-        HAVING COUNT(*) >= 5
-    );
+SELECT e.name
+FROM Employee e
+WHERE e.id IN (
+    SELECT managerId
+    FROM Employee
+    WHERE managerId IS NOT NULL
+    GROUP BY managerId
+    HAVING COUNT(*) >= 5
+);
