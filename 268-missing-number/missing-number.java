@@ -1,20 +1,19 @@
-import java.util.Arrays;
-
 class Solution {
     public int missingNumber(int[] nums) {
         int size = nums.length;
-        Arrays.sort(nums);
+        HashSet<Integer> set = new HashSet<>();
 
-        // Case when 0 is missing
-        if (nums[0] != 0) return 0;
-
-        for (int i = 0; i < size - 1; i++) {
-            if (nums[i+1] != nums[i] + 1) {
-                return nums[i] + 1;
-            }
+        // Put all elements into the set
+        for (int num : nums) {
+            set.add(num);
         }
 
-        // Case when last number (n) is missing
-        return size;
+        // Check which number from 0 to n is missing
+        for (int i = 0; i <= size; i++) {
+            if (!set.contains(i)) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
