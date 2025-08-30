@@ -1,19 +1,14 @@
 class Solution {
     public int missingNumber(int[] nums) {
         int size = nums.length;
-        HashSet<Integer> set = new HashSet<>();
+        int totalSum = size * (size + 1) / 2;
+        int sum = 0;
 
-        // Put all elements into the set
-        for (int num : nums) {
-            set.add(num);
+        for(int i = 0;i<size;i++){
+            sum += nums[i];
         }
 
-        // Check which number from 0 to n is missing
-        for (int i = 0; i <= size; i++) {
-            if (!set.contains(i)) {
-                return i;
-            }
-        }
-        return -1;
+        return totalSum - sum;
+
     }
 }
